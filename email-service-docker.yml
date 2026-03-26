@@ -1,0 +1,19 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    # Use your real email here or an environment variable
+    username: ${EMAIL_USER:hanumanthubhargav4@gmail.com}
+    # This is the secret part - NEVER hardcode this
+    password: ${EMAIL_PASS}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  queue: email.queue
