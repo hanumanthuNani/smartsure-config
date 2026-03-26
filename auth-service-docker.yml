@@ -4,6 +4,7 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+  
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,6 +13,13 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    # Optional: username/password if not using defaults
+    # username: guest
+    # password: guest
 
 springdoc:
   api-docs:
@@ -26,6 +34,7 @@ logging:
     org.hibernate.SQL: DEBUG
 
 jwt:
+  # Ensure this secret is actually long enough in production!
   secret: smartsure-secret-key-must-be-at-least-32-characters-long
   expiration: 86400000
 
@@ -36,3 +45,7 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health,info,tracing # Recommended for Zipkin/Actuator visibility
