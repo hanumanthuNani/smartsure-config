@@ -2,9 +2,7 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    # Use your real email here or an environment variable
     username: ${EMAIL_USER:hanumanthubhargav4@gmail.com}
-    # This is the secret part - NEVER hardcode this
     password: ${EMAIL_PASS}
     properties:
       mail.smtp.auth: true
@@ -17,3 +15,11 @@ spring:
 
 rabbitmq:
   queue: email.queue
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
