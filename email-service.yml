@@ -1,18 +1,25 @@
-server:
-  port: 8085
-
 spring:
-  application:
-    name: email-service
-  config:
-    import: optional:configserver:http://localhost:8888
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USER:hanumanthubhargav4@gmail.com}
+    password: ${EMAIL_PASS}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USER:guest}
+    password: ${RABBIT_PASS:guest}
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+rabbitmq:
+  queue: email.queue
 
 management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
   tracing:
     sampling:
       probability: 1.0
