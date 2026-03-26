@@ -3,7 +3,7 @@ spring:
     host: smtp.gmail.com
     port: 587
     # Uses env var EMAIL_USER, defaults to your email if not found
-    username: ${EMAIL_USER:your-email@gmail.com}
+    username: ${EMAIL_USER:hanumanthubhargav4@gmail.com}
     # Uses env var EMAIL_PASS, no default for safety
     password: ${EMAIL_PASS}
     properties:
